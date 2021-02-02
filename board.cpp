@@ -17,62 +17,54 @@ void Board::SetFEN(std::string fen) {
     int i = 0;
     int pos = 0;
     while (i < (int)fen.size()) {
+        if (fen[i] == '/') {
+            i++;
+            continue;
+        }
+
         switch (fen[i]) {
             case 'p':
                 BP += 1L << pos;
-                pos++;
                 break;
             case 'r':
                 BR += 1L << pos;
-                pos++;
                 break;
             case 'n':
                 BN += 1L << pos;
-                pos++;
                 break;
             case 'b':
                 BB += 1L << pos;
-                pos++;
                 break;
             case 'q':
                 BQ += 1L << pos;
-                pos++;
                 break;
             case 'k':
                 BK += 1L << pos;
-                pos++;
                 break;
             case 'P':
                 WP += 1L << pos;
-                pos++;
                 break;
             case 'R':
                 WR += 1L << pos;
-                pos++;
                 break;
             case 'N':
                 WN += 1L << pos;
-                pos++;
                 break;
             case 'B':
                 WB += 1L << pos;
-                pos++;
                 break;
             case 'Q':
                 WQ += 1L << pos;
-                pos++;
                 break;
             case 'K':
                 WK += 1L << pos;
-                pos++;
-                break;
-            case '/':
                 break;
             default:
-                pos += fen[i] - 48;
+                pos += fen[i] - 48 - 1;
                 break;
         }
 
+        pos++;
         i++;
     }
 }
