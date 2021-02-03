@@ -145,15 +145,19 @@ char Board::GetPieceChar(int chr, int num) {
 std::ostream& operator<<(std::ostream& os, Board& board) {
     std::string str = "";
 
-    str += "+---+---+---+---+---+---+---+---+\n";
+    str += "  +---+---+---+---+---+---+---+---+\n";
     for (int i = board.boardSize - 1; i > -1; i--) {
+        str += std::to_string(i + 1);
+        str += " ";
         for (int j = board.boardSize - 1; j > -1; j--) {
             str += "| ";
             str += board.GetPieceChar(j, i);
             str += " ";
         }
-        str += "|\n+---+---+---+---+---+---+---+---+\n";
+        str += "|\n  +---+---+---+---+---+---+---+---+\n";
     }
+
+    str += "    A   B   C   D   E   F   G   H";
 
     return std::cout << str;
 }
